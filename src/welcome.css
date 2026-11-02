@@ -1,0 +1,13 @@
+/* Keep the requested welcome indicator visible even when other UI motion is reduced. */
+.welcome-loader{display:flex;justify-content:center;align-items:center;gap:10px;margin:24px auto 0;height:22px;pointer-events:none}
+.welcome-loader i{display:block;width:10px;height:10px;border-radius:50%;background:#c5a4ff;box-shadow:0 0 16px #b78aff99;animation:welcome-dot 1.2s ease-in-out infinite!important}
+.welcome-loader i:nth-child(2){animation-delay:.2s!important;background:#8ddfdf}
+.welcome-loader i:nth-child(3){animation-delay:.4s!important;background:#f0b4d8}
+.welcome-orbit i{border:2px dashed #b898e980;box-shadow:inset 0 0 40px #ad8bdd18,0 0 30px #ad8bdd18;animation:welcome-turn 16s linear infinite!important}
+.welcome-orbit i:nth-child(2){animation-direction:reverse!important;animation-duration:22s!important}
+.welcome-orbit i:nth-child(3){animation-duration:10s!important}
+@keyframes welcome-dot{0%,70%,100%{opacity:.25;transform:translateY(0) scale(.8)}35%{opacity:1;transform:translateY(-9px) scale(1.15)}}
+@keyframes welcome-turn{to{transform:rotate(360deg)}}
+@keyframes welcome-dot-soft{0%,70%,100%{opacity:.2}35%{opacity:1}}
+@keyframes welcome-ring-soft{from{opacity:.3}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.welcome-loader i{animation-name:welcome-dot-soft!important}.welcome-orbit i{animation:welcome-ring-soft 1.8s ease-in-out infinite alternate!important;transform:none!important}}

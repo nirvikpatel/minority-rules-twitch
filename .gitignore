@@ -1,0 +1,16 @@
+node_modules/
+dist/
+extension-dist/
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.env*
+test-results/
+.playwright-cli/
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+coverage/

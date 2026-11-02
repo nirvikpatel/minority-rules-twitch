@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "minority-rules",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-30",
+  "assets": {"directory": "./dist", "binding": "ASSETS", "not_found_handling": "single-page-application", "run_worker_first": ["/api/*", "/auth/*"]},
+  "durable_objects": {"bindings": [{"name": "GAME", "class_name": "GameRoom"}]},
+  "migrations": [{"tag": "v1", "new_sqlite_classes": ["GameRoom"]}],
+  "observability": {"enabled": true},
+  "vars": {"EXTENSION_CLIENT_ID": "tci09cjiew49jy3sqg17zw5e0addyu", "BROADCASTER_ID": "1601671453", "APP_ORIGIN": "https://minority-rules.nirvik.workers.dev"}
+}

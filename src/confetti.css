@@ -1,0 +1,83 @@
+.confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;container-type:size;--fall:110cqh}
+.confetti i{position:absolute;top:-18px;left:var(--x);width:var(--size);height:calc(var(--size)*.55);border-radius:1px;background:var(--color);opacity:0;box-shadow:0 1px 1px #0002;animation:confetti-fall var(--duration) var(--delay) cubic-bezier(.2,.4,.65,.9) 3 both;will-change:transform,opacity}
+.confetti i:nth-child(3n){height:var(--size);border-radius:50%}.confetti i:nth-child(4n){width:calc(var(--size)*.5);height:calc(var(--size)*1.6)}
+@keyframes confetti-fall{0%{transform:translate3d(0,-12px,0) rotate(0deg);opacity:0}5%{opacity:1}78%{opacity:.95}100%{transform:translate3d(var(--drift),var(--fall),0) rotate(var(--spin));opacity:0}}
+/* The requested winner celebration stays animated even with reduced motion.
+   Use a smaller, gentler falling shower in that mode; other UI motion stays off. */
+@media(prefers-reduced-motion:reduce){.confetti i{display:none;animation:confetti-gentle var(--duration) var(--delay) linear 3 both!important}.confetti i:nth-child(2n+1){display:block}}
+@keyframes confetti-gentle{0%{transform:translate3d(0,-12px,0) rotate(-15deg);opacity:0}8%{opacity:.85}85%{opacity:.85}100%{transform:translate3d(12px,var(--fall),0) rotate(45deg);opacity:0}}
+
+
+/* Particle variations use external CSS for Twitch CSP. */
+.confetti i:nth-child(1){--x:3.00%;--rest:8%;--color:#c6afff;--delay:0.00s;--duration:6.0s;--size:5px;--drift:-24px;--spin:-360deg}
+.confetti i:nth-child(2){--x:40.70%;--rest:31%;--color:#f5cc77;--delay:1.08s;--duration:6.7s;--size:6px;--drift:25px;--spin:540deg}
+.confetti i:nth-child(3){--x:78.40%;--rest:54%;--color:#8ed9c2;--delay:0.75s;--duration:7.4s;--size:7px;--drift:-26px;--spin:-720deg}
+.confetti i:nth-child(4){--x:16.10%;--rest:77%;--color:#f2aabd;--delay:0.42s;--duration:6.0s;--size:8px;--drift:27px;--spin:900deg}
+.confetti i:nth-child(5){--x:53.80%;--rest:16%;--color:#a6cafa;--delay:0.08s;--duration:6.7s;--size:9px;--drift:-28px;--spin:-1080deg}
+.confetti i:nth-child(6){--x:91.50%;--rest:39%;--color:#c6afff;--delay:1.17s;--duration:7.4s;--size:5px;--drift:29px;--spin:360deg}
+.confetti i:nth-child(7){--x:29.20%;--rest:62%;--color:#f5cc77;--delay:0.83s;--duration:6.0s;--size:6px;--drift:-30px;--spin:-540deg}
+.confetti i:nth-child(8){--x:66.90%;--rest:85%;--color:#8ed9c2;--delay:0.50s;--duration:6.7s;--size:7px;--drift:31px;--spin:720deg}
+.confetti i:nth-child(9){--x:4.60%;--rest:24%;--color:#f2aabd;--delay:0.17s;--duration:7.4s;--size:8px;--drift:-32px;--spin:-900deg}
+.confetti i:nth-child(10){--x:42.30%;--rest:47%;--color:#a6cafa;--delay:1.25s;--duration:6.0s;--size:9px;--drift:33px;--spin:1080deg}
+.confetti i:nth-child(11){--x:80.00%;--rest:70%;--color:#c6afff;--delay:0.92s;--duration:6.7s;--size:5px;--drift:-34px;--spin:-360deg}
+.confetti i:nth-child(12){--x:17.70%;--rest:9%;--color:#f5cc77;--delay:0.58s;--duration:7.4s;--size:6px;--drift:35px;--spin:540deg}
+.confetti i:nth-child(13){--x:55.40%;--rest:32%;--color:#8ed9c2;--delay:0.25s;--duration:6.0s;--size:7px;--drift:-36px;--spin:-720deg}
+.confetti i:nth-child(14){--x:93.10%;--rest:55%;--color:#f2aabd;--delay:1.33s;--duration:6.7s;--size:8px;--drift:37px;--spin:900deg}
+.confetti i:nth-child(15){--x:30.80%;--rest:78%;--color:#a6cafa;--delay:1.00s;--duration:7.4s;--size:9px;--drift:-38px;--spin:-1080deg}
+.confetti i:nth-child(16){--x:68.50%;--rest:17%;--color:#c6afff;--delay:0.67s;--duration:6.0s;--size:5px;--drift:39px;--spin:360deg}
+.confetti i:nth-child(17){--x:6.20%;--rest:40%;--color:#f5cc77;--delay:0.33s;--duration:6.7s;--size:6px;--drift:-40px;--spin:-540deg}
+.confetti i:nth-child(18){--x:43.90%;--rest:63%;--color:#8ed9c2;--delay:0.00s;--duration:7.4s;--size:7px;--drift:41px;--spin:720deg}
+.confetti i:nth-child(19){--x:81.60%;--rest:86%;--color:#f2aabd;--delay:1.08s;--duration:6.0s;--size:8px;--drift:-42px;--spin:-900deg}
+.confetti i:nth-child(20){--x:19.30%;--rest:25%;--color:#a6cafa;--delay:0.75s;--duration:6.7s;--size:9px;--drift:43px;--spin:1080deg}
+.confetti i:nth-child(21){--x:57.00%;--rest:48%;--color:#c6afff;--delay:0.42s;--duration:7.4s;--size:5px;--drift:-44px;--spin:-360deg}
+.confetti i:nth-child(22){--x:94.70%;--rest:71%;--color:#f5cc77;--delay:0.08s;--duration:6.0s;--size:6px;--drift:45px;--spin:540deg}
+.confetti i:nth-child(23){--x:32.40%;--rest:10%;--color:#8ed9c2;--delay:1.17s;--duration:6.7s;--size:7px;--drift:-46px;--spin:-720deg}
+.confetti i:nth-child(24){--x:70.10%;--rest:33%;--color:#f2aabd;--delay:0.83s;--duration:7.4s;--size:8px;--drift:47px;--spin:900deg}
+.confetti i:nth-child(25){--x:7.80%;--rest:56%;--color:#a6cafa;--delay:0.50s;--duration:6.0s;--size:9px;--drift:-48px;--spin:-1080deg}
+.confetti i:nth-child(26){--x:45.50%;--rest:79%;--color:#c6afff;--delay:0.17s;--duration:6.7s;--size:5px;--drift:49px;--spin:360deg}
+.confetti i:nth-child(27){--x:83.20%;--rest:18%;--color:#f5cc77;--delay:1.25s;--duration:7.4s;--size:6px;--drift:-50px;--spin:-540deg}
+.confetti i:nth-child(28){--x:20.90%;--rest:41%;--color:#8ed9c2;--delay:0.92s;--duration:6.0s;--size:7px;--drift:51px;--spin:720deg}
+.confetti i:nth-child(29){--x:58.60%;--rest:64%;--color:#f2aabd;--delay:0.58s;--duration:6.7s;--size:8px;--drift:-52px;--spin:-900deg}
+.confetti i:nth-child(30){--x:96.30%;--rest:87%;--color:#a6cafa;--delay:0.25s;--duration:7.4s;--size:9px;--drift:53px;--spin:1080deg}
+.confetti i:nth-child(31){--x:34.00%;--rest:26%;--color:#c6afff;--delay:1.33s;--duration:6.0s;--size:5px;--drift:-54px;--spin:-360deg}
+.confetti i:nth-child(32){--x:71.70%;--rest:49%;--color:#f5cc77;--delay:1.00s;--duration:6.7s;--size:6px;--drift:55px;--spin:540deg}
+.confetti i:nth-child(33){--x:9.40%;--rest:72%;--color:#8ed9c2;--delay:0.67s;--duration:7.4s;--size:7px;--drift:-56px;--spin:-720deg}
+.confetti i:nth-child(34){--x:47.10%;--rest:11%;--color:#f2aabd;--delay:0.33s;--duration:6.0s;--size:8px;--drift:57px;--spin:900deg}
+.confetti i:nth-child(35){--x:84.80%;--rest:34%;--color:#a6cafa;--delay:0.00s;--duration:6.7s;--size:9px;--drift:-58px;--spin:-1080deg}
+.confetti i:nth-child(36){--x:22.50%;--rest:57%;--color:#c6afff;--delay:1.08s;--duration:7.4s;--size:5px;--drift:59px;--spin:360deg}
+.confetti i:nth-child(37){--x:60.20%;--rest:80%;--color:#f5cc77;--delay:0.75s;--duration:6.0s;--size:6px;--drift:-60px;--spin:-540deg}
+.confetti i:nth-child(38){--x:97.90%;--rest:19%;--color:#8ed9c2;--delay:0.42s;--duration:6.7s;--size:7px;--drift:61px;--spin:720deg}
+.confetti i:nth-child(39){--x:35.60%;--rest:42%;--color:#f2aabd;--delay:0.08s;--duration:7.4s;--size:8px;--drift:-62px;--spin:-900deg}
+.confetti i:nth-child(40){--x:73.30%;--rest:65%;--color:#a6cafa;--delay:1.17s;--duration:6.0s;--size:9px;--drift:63px;--spin:1080deg}
+.confetti i:nth-child(41){--x:11.00%;--rest:88%;--color:#c6afff;--delay:0.83s;--duration:6.7s;--size:5px;--drift:-64px;--spin:-360deg}
+.confetti i:nth-child(42){--x:48.70%;--rest:27%;--color:#f5cc77;--delay:0.50s;--duration:7.4s;--size:6px;--drift:65px;--spin:540deg}
+.confetti i:nth-child(43){--x:86.40%;--rest:50%;--color:#8ed9c2;--delay:0.17s;--duration:6.0s;--size:7px;--drift:-66px;--spin:-720deg}
+.confetti i:nth-child(44){--x:24.10%;--rest:73%;--color:#f2aabd;--delay:1.25s;--duration:6.7s;--size:8px;--drift:67px;--spin:900deg}
+.confetti i:nth-child(45){--x:61.80%;--rest:12%;--color:#a6cafa;--delay:0.92s;--duration:7.4s;--size:9px;--drift:-68px;--spin:-1080deg}
+.confetti i:nth-child(46){--x:99.50%;--rest:35%;--color:#c6afff;--delay:0.58s;--duration:6.0s;--size:5px;--drift:69px;--spin:360deg}
+.confetti i:nth-child(47){--x:37.20%;--rest:58%;--color:#f5cc77;--delay:0.25s;--duration:6.7s;--size:6px;--drift:-70px;--spin:-540deg}
+.confetti i:nth-child(48){--x:74.90%;--rest:81%;--color:#8ed9c2;--delay:1.33s;--duration:7.4s;--size:7px;--drift:71px;--spin:720deg}
+.confetti i:nth-child(49){--x:12.60%;--rest:20%;--color:#f2aabd;--delay:1.00s;--duration:6.0s;--size:8px;--drift:-72px;--spin:-900deg}
+.confetti i:nth-child(50){--x:50.30%;--rest:43%;--color:#a6cafa;--delay:0.67s;--duration:6.7s;--size:9px;--drift:73px;--spin:1080deg}
+.confetti i:nth-child(51){--x:88.00%;--rest:66%;--color:#c6afff;--delay:0.33s;--duration:7.4s;--size:5px;--drift:-74px;--spin:-360deg}
+.confetti i:nth-child(52){--x:25.70%;--rest:89%;--color:#f5cc77;--delay:0.00s;--duration:6.0s;--size:6px;--drift:75px;--spin:540deg}
+.confetti i:nth-child(53){--x:63.40%;--rest:28%;--color:#8ed9c2;--delay:1.08s;--duration:6.7s;--size:7px;--drift:-76px;--spin:-720deg}
+.confetti i:nth-child(54){--x:1.10%;--rest:51%;--color:#f2aabd;--delay:0.75s;--duration:7.4s;--size:8px;--drift:77px;--spin:900deg}
+.confetti i:nth-child(55){--x:38.80%;--rest:74%;--color:#a6cafa;--delay:0.42s;--duration:6.0s;--size:9px;--drift:-78px;--spin:-1080deg}
+.confetti i:nth-child(56){--x:76.50%;--rest:13%;--color:#c6afff;--delay:0.08s;--duration:6.7s;--size:5px;--drift:79px;--spin:360deg}
+.confetti i:nth-child(57){--x:14.20%;--rest:36%;--color:#f5cc77;--delay:1.17s;--duration:7.4s;--size:6px;--drift:-80px;--spin:-540deg}
+.confetti i:nth-child(58){--x:51.90%;--rest:59%;--color:#8ed9c2;--delay:0.83s;--duration:6.0s;--size:7px;--drift:81px;--spin:720deg}
+.confetti i:nth-child(59){--x:89.60%;--rest:82%;--color:#f2aabd;--delay:0.50s;--duration:6.7s;--size:8px;--drift:-82px;--spin:-900deg}
+.confetti i:nth-child(60){--x:27.30%;--rest:21%;--color:#a6cafa;--delay:0.17s;--duration:7.4s;--size:9px;--drift:83px;--spin:1080deg}
+.confetti i:nth-child(61){--x:65.00%;--rest:44%;--color:#c6afff;--delay:1.25s;--duration:6.0s;--size:5px;--drift:-84px;--spin:-360deg}
+.confetti i:nth-child(62){--x:2.70%;--rest:67%;--color:#f5cc77;--delay:0.92s;--duration:6.7s;--size:6px;--drift:85px;--spin:540deg}
+.confetti i:nth-child(63){--x:40.40%;--rest:90%;--color:#8ed9c2;--delay:0.58s;--duration:7.4s;--size:7px;--drift:-86px;--spin:-720deg}
+.confetti i:nth-child(64){--x:78.10%;--rest:29%;--color:#f2aabd;--delay:0.25s;--duration:6.0s;--size:8px;--drift:87px;--spin:900deg}
+.confetti i:nth-child(65){--x:15.80%;--rest:52%;--color:#a6cafa;--delay:1.33s;--duration:6.7s;--size:9px;--drift:-88px;--spin:-1080deg}
+.confetti i:nth-child(66){--x:53.50%;--rest:75%;--color:#c6afff;--delay:1.00s;--duration:7.4s;--size:5px;--drift:24px;--spin:360deg}
+.confetti i:nth-child(67){--x:91.20%;--rest:14%;--color:#f5cc77;--delay:0.67s;--duration:6.0s;--size:6px;--drift:-25px;--spin:-540deg}
+.confetti i:nth-child(68){--x:28.90%;--rest:37%;--color:#8ed9c2;--delay:0.33s;--duration:6.7s;--size:7px;--drift:26px;--spin:720deg}
+.confetti i:nth-child(69){--x:66.60%;--rest:60%;--color:#f2aabd;--delay:0.00s;--duration:7.4s;--size:8px;--drift:-27px;--spin:-900deg}
+.confetti i:nth-child(70){--x:4.30%;--rest:83%;--color:#a6cafa;--delay:1.08s;--duration:6.0s;--size:9px;--drift:28px;--spin:1080deg}
+.confetti i:nth-child(71){--x:42.00%;--rest:22%;--color:#c6afff;--delay:0.75s;--duration:6.7s;--size:5px;--drift:-29px;--spin:-360deg}
+.confetti i:nth-child(72){--x:79.70%;--rest:45%;--color:#f5cc77;--delay:0.42s;--duration:7.4s;--size:6px;--drift:30px;--spin:540deg}

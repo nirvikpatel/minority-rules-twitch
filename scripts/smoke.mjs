@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+const origin=process.argv[2]??process.env.TEST_ORIGIN??'http://localhost:8787';
+async function call(path,options={}) {return fetch(`${origin}${path}`,{...options,headers:{Origin:origin,...options.headers}});}
+async function body(response){assert.ok(response.ok,`HTTP ${response.status}: ${await response.clone().text()}`);return response.json();}
+const {id,control}=await body(await call('/api/demo',{method:'POST'}));
+const base=`/api/room/${id}`,auth={Authorization:`Bearer ${control}`};
+const {readToken}=await body(await call(`${base}/access`,{headers:auth}));
+assert.equal((await call(`${base}/state`)).status,401);
+assert.equal((await call(`${base}/access?token=${readToken}`)).status,403);
+assert.equal((await call('/api/room/live/command',{method:'POST',body:'{}'})).status,401);
+assert.equal((await fetch(`${origin}${base}/command`,{method:'POST',headers:auth,body:'{}'})).status,403);
+let state=await body(await call(`${base}/state`,{headers:auth}));
+const command=async(type,extra={})=>body(await call(`${base}/command`,{method:'POST',headers:{...auth,'Content-Type':'application/json'},body:JSON.stringify({type,version:state.version,...extra})}));
+state=await command('settings',{settings:{pack:'food',seconds:15,sound:false}});
+const staleVersion=state.version;
+state=await command('start');
+assert.equal(state.phase,'voting');assert.equal(state.result,undefined);assert.equal(state.votes,undefined);assert.equal(state.players,undefined);
+assert.equal((await call(`${base}/command`,{method:'POST',headers:auth,body:JSON.stringify({type:'end',version:staleVersion})})).status,409);
+assert.equal((await call(`${base}/command?token=${readToken}`,{method:'POST',body:JSON.stringify({type:'end',version:state.version})})).status,403);
+const refreshed=await body(await call(`${base}/state?token=${readToken}`));assert.equal(refreshed.deadline,state.deadline);
+console.log('PASS: control/read boundaries, CSRF, stale commands, hidden votes and refresh. Waiting for timed round…');
+await new Promise(resolve=>setTimeout(resolve,16000));
+state=await body(await call(`${base}/state?token=${readToken}`));
+assert.equal(state.phase,'reveal');assert.equal(state.result,undefined);assert.equal(state.voted,100);
+await new Promise(resolve=>setTimeout(resolve,7000));
+state=await body(await call(`${base}/state?token=${readToken}`));
+assert.equal(state.phase,'results');assert.equal(state.result.a+state.result.b,100);assert.ok(state.result.survivors>3);
+state=await command('next');assert.equal(state.round,2);assert.equal(state.result,undefined);
+state=await command('end');assert.equal(state.phase,'waiting');assert.equal(state.round,0);assert.equal(state.question,undefined);assert.equal(state.result,undefined);
+console.log('PASS: simulated votes, deadline, suspense, result, next round, and clean reset.');
